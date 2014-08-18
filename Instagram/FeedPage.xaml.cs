@@ -148,7 +148,8 @@ namespace Instagram
 
         private async void OpenUsersPage(IUICommand command)
         {
-            await new MessageDialog(command.Label).ShowAsync();
+            this.Frame.Navigate(typeof(UserPage), user);
+            //await new MessageDialog(command.Label).ShowAsync();
         }
 
         private async void OpenSettings(IUICommand command)
