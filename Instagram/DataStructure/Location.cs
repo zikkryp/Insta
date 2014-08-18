@@ -8,6 +8,11 @@ namespace Instagram.DataStructure
 {
     public class Location
     {
+        public Location(double id)
+        {
+            this.Id = id;
+        }
+
         public Location(double latitude, double longitude)
         {
             this.Latitude = latitude;

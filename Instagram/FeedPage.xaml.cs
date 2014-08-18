@@ -115,7 +115,7 @@ namespace Instagram
 
         private void gridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private async void LoadMore_Click(object sender, RoutedEventArgs e)
@@ -148,8 +148,7 @@ namespace Instagram
 
         private async void OpenUsersPage(IUICommand command)
         {
-            this.Frame.Navigate(typeof(UserPage), user);
-            //await new MessageDialog(command.Label).ShowAsync();
+            await new MessageDialog(command.Label).ShowAsync();
         }
 
         private async void OpenSettings(IUICommand command)

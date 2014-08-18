@@ -53,6 +53,14 @@ namespace Instagram.DataStructure
         public Location Location { get; private set; }
         public Comments Comments { get; private set; }
         public string Filter { get; set; }
+
+        private string _createdTime;
+        public string CreatedTime
+        {
+            get { return GetDate(_createdTime); }
+            private set { _createdTime = value; }
+        }
+
         public string Link { get; private set; }
         public Likes Likes { get; private set; }
         public Images Images { get; private set; }
@@ -62,17 +70,6 @@ namespace Instagram.DataStructure
         public string Id { get; private set; }
         public User User { get; private set; }
         public Videos Videos { get; private set; }
-        private string _createdTime;
-        public string CreatedTime
-        {
-            get { return GetDate(_createdTime); }
-            private set { _createdTime = value; }
-        }
-
-        private async void Message(object s)
-        {
-            await new Windows.UI.Popups.MessageDialog(this.Id).ShowAsync();
-        }
 
         public override string ToString()
         {

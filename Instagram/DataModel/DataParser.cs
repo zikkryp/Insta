@@ -51,8 +51,14 @@ namespace Instagram.DataModel
 
             var locationObject = locationValue.GetObject();
 
-            var latitude = locationObject["latitude"].GetNumber();
-            var longitude = locationObject["longitude"].GetNumber();
+            double latitude = 0;
+            double longitude = 0;
+
+            if (locationObject.ContainsKey("latitude") && locationObject.ContainsKey("longitude"))
+            {
+                latitude = locationObject["latitude"].GetNumber();
+                longitude = locationObject["longitude"].GetNumber();
+            }
 
             if (locationObject.ContainsKey("name") && locationObject.ContainsKey("id"))
             {
@@ -60,6 +66,13 @@ namespace Instagram.DataModel
                 var id = locationObject["id"].GetNumber();
 
                 return new Location(latitude, longitude, name, id);
+            }
+
+            if (locationObject.ContainsKey("id"))
+            {
+                var id = locationObject["id"].GetNumber();
+
+                return new Location(id);
             }
 
             return new Location(latitude, longitude);
