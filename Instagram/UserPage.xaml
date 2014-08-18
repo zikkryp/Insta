@@ -36,9 +36,14 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
         <Grid Grid.Row="1">
-            <GridView>
+            <GridView ItemsSource="{Binding Feed}"
+                      IsItemClickEnabled="True"
+                      VerticalAlignment="Center"
+                      SelectionMode="Multiple"
+                      ItemContainerStyle="{ StaticResource GridViewItemStyle}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <GridView.Header>
-                    <Grid Width="400">
+                    <Grid Width="400" Height="400">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition/>
@@ -49,8 +54,40 @@
                             </Rectangle.Fill>
                         </Rectangle>
                         <TextBlock Text="{Binding User.Username}" FontSize="34" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1"/>
+                        <TextBlock Text="{Binding User.Counts.Media}" FontSize="24" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
                     </Grid>
                 </GridView.Header>
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="250" Height="275">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Rectangle RadiusX="50" RadiusY="50" Width="200" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="{Binding Images.Standard.Url}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Grid Grid.Row="1">
+                                <GridViewItem  Style="{StaticResource GridNoEffects}" Width="55" Height="55" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    <Rectangle RadiusX="100" RadiusY="100" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="Images/Action/nolike.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </GridViewItem>
+                                <GridViewItem Style="{StaticResource GridNoEffects}" Width="55" Height="55" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                    <Rectangle RadiusX="100" RadiusY="100" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="Images/Action/comment.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </GridViewItem>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
             </GridView>
         </Grid>
     </Grid>

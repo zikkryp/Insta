@@ -76,7 +76,7 @@ namespace Instagram.DataModel
                 }
                 else
                 {
-                    answer = await new Client().GetAnswerAsync("https://api.instagram.com/v1/users/self/feed?access_token=" + authData.Token);
+                    answer = await new Client().GetAnswerAsync("https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + authData.Token);
                 }
             }
 

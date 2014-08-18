@@ -42,12 +42,15 @@ namespace Instagram
             this.navigationHelper.SaveState += navigationHelper_SaveState;
         }
 
-        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             var user = e.NavigationParameter as User;
 
             this.DefaultViewModel["User"] = user;
 
+            var feed = await FeedDataSource.GetFeedAsync(user.Id);
+
+            this.DefaultViewModel["Feed"] = feed;
         }
 
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
@@ -68,5 +71,10 @@ namespace Instagram
         }
 
         #endregion
+
+        private void GridViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }
