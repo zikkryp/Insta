@@ -47,6 +47,7 @@ namespace Instagram
             var user = e.NavigationParameter as User;
 
             this.DefaultViewModel["User"] = user;
+
         }
 
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
